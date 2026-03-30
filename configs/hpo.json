@@ -1,0 +1,10 @@
+{
+  "budget": 12,
+  "population_size": 4,
+  "elite_size": 2,
+  "mutation_rate": 0.35,
+  "inertia": 0.6,
+  "cognitive": 1.4,
+  "social": 1.4,
+  "seed": 42
+}

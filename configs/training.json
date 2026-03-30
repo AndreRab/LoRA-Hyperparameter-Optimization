@@ -1,0 +1,18 @@
+{
+  "model_name": "Qwen/Qwen2.5-3B-Instruct",
+  "output_root": "outputs",
+  "data_root": "artifacts/data",
+  "max_input_length": 512,
+  "max_target_length": 128,
+  "eval_max_new_tokens": 96,
+  "gradient_accumulation_steps": 4,
+  "warmup_ratio": 0.03,
+  "weight_decay": 0.0,
+  "logging_steps": 10,
+  "save_total_limit": 2,
+  "seed": 42,
+  "use_bf16": true,
+  "load_in_8bit": false,
+  "trust_remote_code": false,
+  "train_on_validation_too": false
+}

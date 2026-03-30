@@ -1,0 +1,13 @@
+{
+  "target_modules": [
+    "q_proj",
+    "v_proj"
+  ],
+  "rank": 4,
+  "alpha": 16,
+  "dropout": 0.05,
+  "learning_rate": 0.0002,
+  "batch_size": 8,
+  "steps": 300,
+  "scheduler": "cosine"
+}

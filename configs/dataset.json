@@ -1,0 +1,14 @@
+{
+  "gsm8k_enabled": true,
+  "gsm8k_name": "openai/gsm8k",
+  "gsm8k_config": "main",
+  "superni_enabled": false,
+  "superni_name": "Muennighoff/natural-instructions",
+  "max_gsm8k_train": 512,
+  "max_gsm8k_validation": 128,
+  "max_gsm8k_test": 256,
+  "max_superni_train": 0,
+  "max_superni_validation": 0,
+  "max_superni_test": 0,
+  "seed": 42
+}

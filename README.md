@@ -87,7 +87,7 @@ learning rate:   [5e-6 ... 5e-4] (log-scale)
 batch size:      [2, 4, 8, 16]
 steps:           [100, 200, 300, 500]
 scheduler:       [linear, cosine, constant]
-target modules:  predefined module sets
+target modules:  [Wq/Wv only]
 ```
 
 ---
@@ -236,13 +236,14 @@ Define the possible values of:
 
 ### Step 5. Define the baseline
 
-Prepare one hand-designed baseline configuration.
+Prepare one reference baseline based on the original LoRA setup.
 
 Example baseline:
 
 ```text
-rank = 16
-alpha = 32
+target modules = [Wq, Wv]
+rank = 4
+alpha = 16
 dropout = 0.05
 learning rate = 2e-4
 batch size = 8
@@ -277,7 +278,7 @@ Two practical variants are possible:
 
 Compare:
 
-- **baseline LoRA configuration**
+- **standard LoRA baseline**: `Wq/Wv` only, `r = 4`
 - **best ES configuration**
 - **best PSO configuration**
 
@@ -299,6 +300,7 @@ A clean version of the project could be:
 - **PEFT:** LoRA
 - **Metric:** Exact Match on final answer
 - **HPO methods:** ES and PSO
+- **Reference baseline:** original LoRA-style `Wq/Wv, r = 4`
 - **Budget:** 30 total configurations per method
 - **Training per configuration:** 200–500 steps or max 10 minutes
 
