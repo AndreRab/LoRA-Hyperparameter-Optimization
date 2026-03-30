@@ -10,14 +10,15 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from lora_hpo.cli import common_parser, load_runtime_configs
 from lora_hpo.config import BaselineConfig
-from lora_hpo.datasets import build_mixed_dataset, save_dataset_dict
-from lora_hpo.hpo import run_es, run_pso
-from lora_hpo.training import compare_results, retrain_and_test, train_short_run
 
 
 def main() -> None:
     parser = common_parser("Run the entire LoRA HPO experiment end to end.")
     args = parser.parse_args()
+    from lora_hpo.datasets import build_mixed_dataset, save_dataset_dict
+    from lora_hpo.hpo import run_es, run_pso
+    from lora_hpo.training import compare_results, retrain_and_test, train_short_run
+
     dataset_config, training, baseline, search_space, hpo = load_runtime_configs(args)
 
     dataset = build_mixed_dataset(dataset_config)

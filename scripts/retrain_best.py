@@ -11,8 +11,6 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from lora_hpo.cli import common_parser, load_runtime_configs
 from lora_hpo.config import BaselineConfig
-from lora_hpo.datasets import load_prepared_dataset
-from lora_hpo.training import retrain_and_test
 
 
 def main() -> None:
@@ -20,6 +18,9 @@ def main() -> None:
     parser.add_argument("--config-json", required=True, help="Path to a best_config.json or compatible config file.")
     parser.add_argument("--run-name", default="retrain", help="Output subdirectory name.")
     args = parser.parse_args()
+    from lora_hpo.datasets import load_prepared_dataset
+    from lora_hpo.training import retrain_and_test
+
     _dataset_cfg, training, _baseline, _search_space, _hpo = load_runtime_configs(args)
 
     payload = json.loads(Path(args.config_json).read_text())

@@ -109,7 +109,7 @@ def _build_training_args(output_dir: str | Path, training: TrainingConfig, basel
         weight_decay=training.weight_decay,
         logging_steps=training.logging_steps,
         save_steps=max(50, training.logging_steps),
-        eval_strategy="no",
+        evaluation_strategy="no",
         save_total_limit=training.save_total_limit,
         bf16=torch.cuda.is_available() and training.use_bf16 and torch.cuda.is_bf16_supported(),
         fp16=torch.cuda.is_available() and not (training.use_bf16 and torch.cuda.is_bf16_supported()),
@@ -234,6 +234,8 @@ def retrain_and_test(
         from peft import PeftModel
 
         model = PeftModel.from_pretrained(model, str(adapter_dir))
+    if torch.cuda.is_available():
+        model = model.cuda()
 
     test_metrics = evaluate_model(
         model=model,
